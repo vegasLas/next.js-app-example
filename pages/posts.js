@@ -23,15 +23,20 @@ const Post = ({ id, title, body }) => {
     const [state, setState] = useState(false)
     const comments = useSelector(getCommentsSel)
     const dispatch = useDispatch()
+    let fakeComments;
+    let mark = [];
+    let commentsFiltered = comments.filter(o => o.postId === id)
+    comments ? mark = commentsFiltered
+        .map(c => <Comment key={c.body} id={c.id} name={c.name} body={c.body} />)
+        : mark = []
     const handleClick = () => {
         !state ? setState(true) : setState(false)
-        dispatch(getComments(id))
+        if (comments.length > 0 && mark.length > 0) {
+            comments.some(o => o.postId === mark[0].postId) ? dispatch(getComments(id)) : null
+        } else if (mark.length === 0) {
+            dispatch(getComments(id))
+        }
     }
-    let mark;
-    let commentsFiltered = comments.filter(o => o.postId === id)
-    state && comments ? mark = commentsFiltered
-        .map(c => <Comment key={c.body} id={c.id} name={c.name} body={c.body} />)
-        : mark = null
 
     return (
         <div className={"post"}>
@@ -43,7 +48,7 @@ const Post = ({ id, title, body }) => {
                 {!state ? "Открыть комментарии" : "Скрыть комментарии"}
             </button>
             <div className={"post__comments"}>
-                {mark}
+                {state && mark}
             </div>
         </div>
     )
@@ -72,7 +77,6 @@ const Posts = React.memo(() => {
                     {listPosts}
                 </div>
             </div>
-
         </MainLayout>
     )
 })

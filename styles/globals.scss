@@ -141,6 +141,10 @@ background: #f1f1f2;
   background-color: #fff;
   padding: 21px 27px 0 30px;
   margin-bottom: 30px;
+  border: 1px solid #ECEAF2;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(64, 40, 154, 0.05);
+  border-radius: 4px;
   &__button {
     text-align: left;
     margin-bottom: 21px;
@@ -206,6 +210,10 @@ background: #f1f1f2;
   justify-content: left;
   margin-bottom: 30px;
   align-items: flex-start;
+  border: 1px solid #ECEAF2;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(64, 40, 154, 0.05);
+  border-radius: 4px;
   &__name {
     background-color: rgba(0, 0, 0, 0);
     font-style: normal;

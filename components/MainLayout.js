@@ -1,19 +1,13 @@
-// import '../styles/home.scss'
 import React from 'react'
 import Head from 'next/head'
 import cn from 'classnames'
-import SimpleBar from "simplebar-react";
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import NavLink from './NavLink'
-import Detailed from './Detailed'
 import { useSelector } from 'react-redux'
-import Users from '../pages/users'
 import Detailded from './Detailed'
 import { getSelectedUserSel } from '../store/selectors/users-selectors'
 const MainLayout = React.memo(({ children }) => {
     const selectUser = useSelector(getSelectedUserSel)
-    console.log(selectUser)
     const router = useRouter()
     const { asPath } = router;
     let detailed;

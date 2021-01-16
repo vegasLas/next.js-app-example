@@ -23,7 +23,6 @@ const Post = ({ id, title, body }) => {
     const [state, setState] = useState(false)
     const comments = useSelector(getCommentsSel)
     const dispatch = useDispatch()
-    let fakeComments;
     let mark = [];
     let commentsFiltered = comments.filter(o => o.postId === id)
     comments ? mark = commentsFiltered
@@ -37,7 +36,8 @@ const Post = ({ id, title, body }) => {
             dispatch(getComments(id))
         }
     }
-
+    let commentsCopy = [];
+    state && mark.length > 0 ? commentsCopy = mark : null
     return (
         <div className={"post"}>
             <h3 className={'post__h3'}>{title} </h3>
@@ -48,7 +48,7 @@ const Post = ({ id, title, body }) => {
                 {!state ? "Открыть комментарии" : "Скрыть комментарии"}
             </button>
             <div className={"post__comments"}>
-                {state && mark}
+                {commentsCopy}
             </div>
         </div>
     )

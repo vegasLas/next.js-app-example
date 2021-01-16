@@ -13,14 +13,9 @@ const postsReducer = (state = initialState, action) => {
                 posts: action.posts
             }
         case SET_COMMENTS:
-            let commentsCopy = [...state.comments]
-            let commentsCopy2 = action.comments
-            let s = false;
-            s = commentsCopy.some(o => o.postId === commentsCopy2[0].postId)
-            if (s) commentsCopy2 = []
             return {
                 ...state,
-                comments: [...state.comments].concat(commentsCopy2)
+                comments: [...state.comments].concat(action.comments)
             }
 
         case SELECT_USER_POST: {

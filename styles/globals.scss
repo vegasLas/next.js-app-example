@@ -72,6 +72,7 @@ background: #f1f1f2;
   padding-left: 95px;
   height: 100vh;
   overflow: auto;
+  padding-right: 10px;
   }
   &__navbar {
     position: relative;
@@ -134,7 +135,6 @@ background: #f1f1f2;
 }
 .post {
   max-width: 570px;
-  min-height: 214px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
